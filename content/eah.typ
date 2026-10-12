@@ -258,11 +258,21 @@ In both examples, the strategy domains are simplexes with efficient separation o
 
 == What about correlated equilibrium?
 
-The discussion above gives an efficient way to compute CCEs in a broad class of games, including multilinear games on compact convex domains. CEs are harder. In a CCE, a player commits to a deviation before seeing the recommendation, so incentive constraints reduce to unconditional expected gains. In a CE, the player sees the recommendation first and may deviate differently for each one, so the constraints must retain the conditional distribution given every recommendation, which is difficult to represent when recommendations are numerous.
+The discussion above gives an efficient way to compute CCEs in a broad class of games, including multilinear games on compact convex domains. However, CEs are harder. 
 
-This difficulty can be overcome for succinct games of polynomial type (the number of players and actions is polynomial in the representation size) that satisfy the polynomial expectation property (expected utilities under product distributions are computable in polynomial time). For such games, the Ellipsoid-Against-Hope framework computes a CE in polynomial time #citep(<papadimitriou2008computing>), and a variant yields an exact rational CE with polynomial-size support #citep(<jiang2011polynomial>). Polymatrix games and graphical games with bounded neighborhoods are covered.
+In a CCE, a player commits to a deviation before seeing the recommendation, so incentive constraints reduce to unconditional expected gains. 
+$ 
+EE_(a tilde mu) [u_i (a'_i, a_(-i)) - u_i (a)] <= 0,
+$
+In a CE, the player sees the recommendation first and may deviate differently, so the constraints must retain the conditional distribution given every recommendation, which could be difficult to represent when the recommendations are numerous.
+$ 
+EE_(a tilde mu) [bb(1)[a_i = a''_i] (u_i (a'_i, a_(-i)) - u_i (a))] <= 0 quad "for every pair" (a''_i, a'_i)
+$
 
-Beyond polynomial type, the situation is less well understood. A perfect-recall extensive-form game may have exponentially many normal-form pure strategies, yet its realization-plan polytope has only polynomial dimension. The convex formulation above exploits this compact representation to compute a CCE, but a CE requires deviations that depend on the recommendation received, and the compact representation does not give efficient access to them. Computing a normal-form CE for general extensive-form and Bayesian games remains a major open question
+
+Although CE is harder than CCE in general, there still exists an important class of games which still can be computed efficiently: *succinct games of polynomial type*. For such games, the Ellipsoid-Against-Hope framework computes a CE in polynomial time #citep(<papadimitriou2008computing>), and a later variant even computes an exact CE, with rational probabilities and only polynomially many outcomes in this support #citep(<jiang2011polynomial>). Polymatrix games and graphical games with bounded neighborhoods are both covered.
+
+Beyond polynomial type, the situation could be more complicated. A perfect-recall extensive-form game may have exponentially many normal-form pure strategies, yet its realization-plan polytope has only polynomial dimension. This representation is enough to compute a CCE with the method above, but a CE is different: it needs deviations that depend on the recommendation received, and the compact representation  gives no effective way to express them. Computing a normal-form CE for general extensive-form and Bayesian games still remains a major open question
 
 = Bibliographic remarks
 
